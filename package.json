@@ -1,7 +1,7 @@
 {
   "type":"module",
   "main": "./H.js",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "dependencies": {
     "typescript": "^4.7.2"
   },
