@@ -9,6 +9,7 @@
     "jsx-runtime": "./index.d.ts"
   },
   "scripts": {
+    "preinstall": "rm -rf H.d.ts",
     "install": "tsc -d --allowJs --emitDeclarationOnly"
   },
   "dependencies": {

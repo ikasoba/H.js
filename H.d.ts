@@ -4,7 +4,7 @@
  */
 export function receiverListener(r: Receiver<any>, n: Text): Text;
 export function generateRandomName(): string;
-export function style(...template: [TemplateStringsArray, ...any[]] | string[]): (string | HTMLStyleElement)[];
+export function style(...template: [TemplateStringsArray, ...any[]] | string[]): [string, HTMLStyleElement];
 /**
  * @type {(arg:[string,HTMLStyleElement])=>string}
  */
@@ -21,7 +21,7 @@ export class Receiver<T> {
     send(v: T): void;
     [Symbol.toPrimitive](): T;
 }
-export function createStyleFromURL(url: string): Promise<(string | HTMLStyleElement)[]>;
+export function createStyleFromURL(url: string): Promise<[string, HTMLStyleElement]>;
 export function h(tag: string | HJSComponent, attrs?: Attrs | undefined | null, ...children: (Element | string | Receiver<any>)[]): HTMLElement;
 export function goto(url: string): undefined;
 export type Listener<T extends Function> = T extends (k: string, v: infer F) => any ? F : never;
