@@ -6,6 +6,8 @@ declare global {
     export type ElementClass = never
     export interface Element extends Attrs,HTMLElement {}
     export interface IntrinsicAttributes extends Attrs {}
-    export interface IntrinsicElements {}
+    export interface IntrinsicElements {
+      [key:string]: {}
+    }
   }
 }
