@@ -1,7 +1,11 @@
-import type { Attrs } from "./H"
-
+import type {Attrs} from "./H"
 export type * from "./H"
 
-export namespace JSX {
-  export type IntrinsicElements = HTMLElement & Attrs
+declare global {
+  declare namespace JSX {
+    export type ElementClass = never
+    export interface Element extends Attrs,HTMLElement {}
+    export interface IntrinsicAttributes extends Attrs {}
+    export interface IntrinsicElements {}
+  }
 }

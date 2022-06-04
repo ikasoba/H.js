@@ -101,6 +101,8 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "include": [
-    "./H.js"
+    "./H.js",
+    "./H.d.ts",
+    "./index.d.ts"
   ]
 }

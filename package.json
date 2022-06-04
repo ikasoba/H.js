@@ -5,6 +5,9 @@
   "types": "index.d.ts",
   "license": "MIT",
   "version": "0.1.0",
+  "exports":{
+    "jsx-runtime": "./index.d.ts"
+  },
   "scripts": {
     "install": "npx tsc -d --allowJs --emitDeclarationOnly"
   },
