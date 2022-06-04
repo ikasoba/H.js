@@ -9,7 +9,7 @@
     "jsx-runtime": "./index.d.ts"
   },
   "scripts": {
-    "install": "npx tsc -d --allowJs --emitDeclarationOnly"
+    "install": "tsc -d --allowJs --emitDeclarationOnly"
   },
   "dependencies": {
     "typescript": "^4.7.2"
