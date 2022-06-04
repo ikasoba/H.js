@@ -6,7 +6,6 @@
   "license": "MIT",
   "version": "0.1.0",
   "exports":{
-    ".": "./H.js",
     "jsx-runtime": "./jsx-runtime.d.ts"
   },
   "scripts": {
