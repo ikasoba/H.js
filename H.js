@@ -10,6 +10,8 @@
  * } & Record<string,string>} Attrs
  */
 
+/** @typedef {(attrs:Attrs,...children:(Element|string|Receiver<any>)[]) => HTMLElement} HJSComponent */
+
 /** @type {(a:any[])=>a is string[]} */
 const isStringArray = a => a.every(x => (typeof x === "string" && /** @type {any} */(x)?.raw==undefined));
 
@@ -86,12 +88,15 @@ export function receiverListener(r,n){
 }
 
 /**
- * @param {string} tag
+ * @param {string|HJSComponent} tag
  * @param {Attrs|undefined|null} attrs
  * @param {(Element|string|Receiver<any>)[]} children
  */
 export const h = (tag,attrs={},...children) => {
   if (attrs==undefined)attrs = {};
+  if (tag instanceof Function){
+    return tag(attrs,...children)
+  }
   const e = document.createElement(tag)
 
   // イベント設定
