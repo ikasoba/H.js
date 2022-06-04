@@ -7,15 +7,23 @@ const name = setStyle(style`
   font-size: 2rem;
 `)
 
-const state = new Receiver(0)
-const main = h("button",{
-              on:{
-                click(){
-                  state.send(state+1)
-                }
-              },
-              class: name
-            },[
-              "i: ",state
-            ])
-document.body.append(main)
+const button = () => {
+  const i = new Receiver(0)
+  return h("button",{
+    on:{
+      click(){
+        i.send(i+1)
+      }
+    },
+    class: name
+  },[
+    "i: ",i
+  ])
+}
+
+const main = () => {
+  return h("div",{},[
+    button(),button(),button()
+  ])
+}
+document.body.append(main())
