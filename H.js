@@ -20,7 +20,7 @@ export const generateRandomName = () => "H__"+crypto.getRandomValues(new Uint32A
 /**
  * CSSスタイルを生成します。
  * @param {[TemplateStringsArray,...any[]]|string[]} template
- * @return {[string,HTMLStyleElement]}
+ * @returns {[string,HTMLStyleElement]}
  */
 export const style = (...template) => {
   const e = document.createElement("style")
@@ -32,7 +32,6 @@ export const style = (...template) => {
 
 /**
  * @type {(arg:[string,HTMLStyleElement])=>string}
- * @returns {[string,HTMLStyleElement]}
  */
 export const setStyle = ([name,style]) => {
   document.head.append(style)
