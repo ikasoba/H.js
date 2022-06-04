@@ -6,7 +6,7 @@
   "license": "MIT",
   "version": "0.1.0",
   "scripts": {
-    "preinstall": "tsc -d --allowJs --noEmit"
+    "install": "tsc -d --allowJs --noEmit"
   },
   "dependencies": {
     "typescript": "^4.7.2"
