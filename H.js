@@ -20,6 +20,7 @@ export const generateRandomName = () => "H__"+crypto.getRandomValues(new Uint32A
 /**
  * CSSスタイルを生成します。
  * @param {[TemplateStringsArray,...any[]]|string[]} template
+ * @return {[string,HTMLStyleElement]}
  */
 export const style = (...template) => {
   const e = document.createElement("style")
