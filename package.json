@@ -2,8 +2,12 @@
   "type":"module",
   "main": "./H.js",
   "name": "h.js",
+  "types": "index.d.ts",
   "license": "MIT",
   "version": "0.1.0",
+  "scripts": {
+    "build": "tsc -d --allowJs --noEmit"
+  },
   "dependencies": {
     "typescript": "^4.7.2"
   },
