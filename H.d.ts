@@ -6,9 +6,9 @@ export function receiverListener(r: Receiver<any>, n: Text): Text;
 export function generateRandomName(): string;
 export function style(...template: [TemplateStringsArray, ...any[]] | string[]): (string | HTMLStyleElement)[];
 /**
- * @type {(name:string,style:HTMLStyleElement)=>string}
+ * @type {(arg:[string,HTMLStyleElement])=>string}
  */
-export const setStyle: (name: string, style: HTMLStyleElement) => string;
+export const setStyle: (arg: [string, HTMLStyleElement]) => string;
 /** @template T */
 export class Receiver<T> {
     /** @param {T} v */
