@@ -6,7 +6,7 @@
   "license": "MIT",
   "version": "0.1.0",
   "exports":{
-    "jsx-runtime": "./jsx-runtime.d.ts"
+    "./jsx-runtime": "./jsx-runtime.d.ts"
   },
   "scripts": {
     "preinstall": "rm -rf H.d.ts",
