@@ -16,14 +16,14 @@ const button = () => {
       }
     },
     class: name
-  },[
+  },
     "i: ",i
-  ])
+  )
 }
 
 const main = () => {
-  return h("div",{},[
+  return h("div",{},
     button(),button(),button()
-  ])
+  )
 }
 document.body.append(main())

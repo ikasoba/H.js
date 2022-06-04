@@ -87,10 +87,11 @@ export function receiverListener(r,n){
 
 /**
  * @param {string} tag
- * @param {Attrs} attrs
+ * @param {Attrs|undefined|null} attrs
  * @param {(Element|string|Receiver<any>)[]} children
  */
-export const h = (tag,attrs={},children=[]) => {
+export const h = (tag,attrs={},...children) => {
+  if (attrs==undefined)attrs = {};
   const e = document.createElement(tag)
 
   // イベント設定
