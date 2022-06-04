@@ -6,8 +6,8 @@
 /**
  * @typedef {{
  *   on?: Record<string,Listener<Element["addEventListener"]>>,
- *   style?: string | CSSStyleDeclaration
- *   [key:string]: Record<string,Listener<Element["addEventListener"]>> | string | CSSStyleDeclaration
+ *   style?: string | CSSStyleDeclaration,
+ *   [key:string]: Record<string,Listener<Element["addEventListener"]>> | string | CSSStyleDeclaration | undefined
  * }} Attrs
  */
 
