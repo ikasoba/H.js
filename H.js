@@ -32,6 +32,7 @@ export const style = (...template) => {
 
 /**
  * @type {(arg:[string,HTMLStyleElement])=>string}
+ * @returns {[string,HTMLStyleElement]}
  */
 export const setStyle = ([name,style]) => {
   document.head.append(style)
