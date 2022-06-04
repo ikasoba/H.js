@@ -7,7 +7,8 @@
  * @typedef {{
  *   on?: Record<string,Listener<Element["addEventListener"]>>,
  *   style?: string | CSSStyleDeclaration
- * } & Record<string,string>} Attrs
+ *   [key:string]: Record<string,Listener<Element["addEventListener"]>> | string | CSSStyleDeclaration
+ * }} Attrs
  */
 
 /** @typedef {(attrs:Attrs,...children:(Element|string|Receiver<any>)[]) => HTMLElement} HJSComponent */
