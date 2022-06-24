@@ -84,7 +84,11 @@ export const createStyleFromURL = async (url) => {
  */
 export function receiverListener(r,n){
   r.listen(v => {
-    n.textContent = "" + v
+    if (n instanceof Text){
+      n.textContent = "" + v
+    }else{
+      n.replaceWith(v)
+    }
   })
   return n
 }
