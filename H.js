@@ -6,8 +6,8 @@
 /**
  * @typedef {{
  *   on?: Record<string,Listener<Element["addEventListener"]>>,
- *   style?: string | CSSStyleDeclaration,
- *   [key:string]: Record<string,Listener<Element["addEventListener"]>> | string | CSSStyleDeclaration | undefined
+ *   style?: string | Record<string,string|(string|Receiver)[]>,
+ *   [key:string]: string | undefined
  * }} Attrs
  */
 
@@ -101,16 +101,29 @@ export const h = (tag,attrs={},...children) => {
   }
   const e = document.createElement(tag)
 
+  for (const [k,v] in attrs){
+    k,v
+  }
   // イベント設定
   Object.entries(attrs.on || {}).forEach(([k,v]) => e.addEventListener(k,v))
   delete attrs.on
 
   // スタイル設定
-  if (attrs.style instanceof CSSStyleDeclaration){
-    const style = attrs.style
-    Array.from(style,(_,i)=>style.item(i)).forEach(k=>e.style.setProperty(k,style.getPropertyValue(k)))
-  }else if (typeof attrs.style === "string"){
+  if (typeof attrs.style === "string"){
     e.style.cssText = attrs.style
+  }else {
+    Object.entries(attrs.style).forEach(([key,value])=>{
+      if (value instanceof Array){
+        e.style.setProperty(key,value.map(x=>{
+          if (x instanceof Receiver){
+            x.listen(() => {
+              e.style.setProperty(key,value.join())
+            })
+            return ""+x
+          }else return x
+        }))
+      }else e.style.setProperty(key,value)
+    })
   }
   delete attrs.style
 
