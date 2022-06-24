@@ -48,15 +48,16 @@ export class Receiver {
   constructor(v){
     this.value = v
   }
-  /** @param {(v:T)=>void} f */
+  /** @param {(v:T,p:T)=>void} f */
   listen(f){
     this.listeners.add(f)
   }
   
   /** @param {T} v */
   send(v){
+    const pre = this.value
     this.value = v
-    this.listeners.forEach( f => f(v) )
+    this.listeners.forEach( f => f(v,pre) )
   }
   [Symbol.toPrimitive](){
     return this.value
@@ -83,11 +84,12 @@ export const createStyleFromURL = async (url) => {
  * @param {Text|Element} n
  */
 export function receiverListener(r,n){
-  r.listen(v => {
+  r.listen((v) => {
     if (n instanceof Text){
       n.textContent = "" + v
     }else{
       n.replaceWith(v)
+      n=v
     }
   })
   return n
