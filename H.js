@@ -80,7 +80,7 @@ export const createStyleFromURL = async (url) => {
 
 /**
  * @param {Receiver<any>} r
- * @param {Text} n
+ * @param {Text|Element} n
  */
 export function receiverListener(r,n){
   r.listen(v => {
@@ -128,7 +128,7 @@ export const h = (tag,attrs={},...children) => {
   Object.entries(/** @type {Record<string,string>} */(attrs)).forEach(([k,v]) => e.setAttribute(k,v))
 
   // 子を設定
-  e.append(...children.map( x => x instanceof Receiver ? receiverListener(x,document.createTextNode(""+x.value)) : x))
+  e.append(...children.map( x => x instanceof Receiver ? receiverListener(x,!(x.value instanceof Element) ? document.createTextNode(""+x.value) : x.value) : x))
   return e
 };
 
