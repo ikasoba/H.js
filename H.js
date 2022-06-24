@@ -6,8 +6,8 @@
 /**
  * @typedef {{
  *   on?: Record<string,Listener<Element["addEventListener"]>>,
- *   style?: string | Record<string,string|(string|Receiver)[]>,
- *   [key:string]: string | undefined
+ *   style?: string | Record<string,string|(string|Receiver<any>)[]>,
+ *   [key:string]: string | undefined | Record<string,string|(string|Receiver<any>)[]> | Record<string,Listener<Element["addEventListener"]>>
  * }} Attrs
  */
 
@@ -101,9 +101,6 @@ export const h = (tag,attrs={},...children) => {
   }
   const e = document.createElement(tag)
 
-  for (const [k,v] in attrs){
-    k,v
-  }
   // イベント設定
   Object.entries(attrs.on || {}).forEach(([k,v]) => e.addEventListener(k,v))
   delete attrs.on
@@ -111,7 +108,7 @@ export const h = (tag,attrs={},...children) => {
   // スタイル設定
   if (typeof attrs.style === "string"){
     e.style.cssText = attrs.style
-  }else {
+  }else if (attrs.style){
     Object.entries(attrs.style).forEach(([key,value])=>{
       if (value instanceof Array){
         e.style.setProperty(key,value.map(x=>{
@@ -121,7 +118,7 @@ export const h = (tag,attrs={},...children) => {
             })
             return ""+x
           }else return x
-        }))
+        }).join(""))
       }else e.style.setProperty(key,value)
     })
   }
